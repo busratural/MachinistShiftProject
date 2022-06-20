@@ -24,5 +24,7 @@ namespace MachinistShiftProject.DataAccess
         public DbSet<Expedition> Expedition { set; get; }
         public DbSet<TaskDefinition> TaskDefinitions { set; get; }
         public DbSet<TaskTitle> TaskTitles { set; get; }
+        public DbSet<Title> Titles { get; set; }
+        public DbSet<Staff> Staffs { get; set; }
     }
 }

@@ -3,8 +3,10 @@ using MachinistShiftProject.Business.Concrate;
 using MachinistShiftProject.Business.Concrete;
 using MachinistShiftProject.DataAccess;
 using MachinistShiftProject.DataAccess.Absract;
+using MachinistShiftProject.DataAccess.Abstract;
 using MachinistShiftProject.DataAccess.Concrete;
 using Microsoft.EntityFrameworkCore;
+using StaffShiftProject.Business.Concrete;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -28,6 +30,15 @@ builder.Services.AddScoped<ITaskTitleWriteRepository, TaskTitleWriteRepository>(
 builder.Services.AddScoped<ITaskDefinitonService, TaskDefinitonManager>();
 builder.Services.AddScoped<ITaskDefinitionReadRepository, TaskDefinitionReadRepository>();
 builder.Services.AddScoped<ITaskDefinitionWriteRepository, TaskDefinitionWriteRepository>();
+
+
+builder.Services.AddScoped<ITitleService, TitleManager>();
+builder.Services.AddScoped<ITitleReadRepository, TitleReadRepository>();
+builder.Services.AddScoped<ITitleWriteRepository, TitleWriteRepository>();
+
+builder.Services.AddScoped<IStaffService, StaffManager>();
+builder.Services.AddScoped<IStaffReadRepository,  StaffReadRepository>();
+builder.Services.AddScoped<IStaffWriteRepository, StaffWriteRepository>();
 
 var app = builder.Build();
 

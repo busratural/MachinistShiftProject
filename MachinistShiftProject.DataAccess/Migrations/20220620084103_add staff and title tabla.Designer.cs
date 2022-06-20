@@ -4,6 +4,7 @@ using MachinistShiftProject.DataAccess;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MachinistShiftProject.DataAccess.Migrations
 {
     [DbContext(typeof(MachinistShiftDbContext))]
-    partial class MachinistShiftDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220620084103_add staff and title tabla")]
+    partial class addstaffandtitletabla
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -56,7 +58,7 @@ namespace MachinistShiftProject.DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Expedition", (string)null);
+                    b.ToTable("Expedition");
                 });
 
             modelBuilder.Entity("MachinistShiftProject.Entities.Machinist", b =>
@@ -96,7 +98,7 @@ namespace MachinistShiftProject.DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Machinists", (string)null);
+                    b.ToTable("Machinists");
                 });
 
             modelBuilder.Entity("MachinistShiftProject.Entities.Staff", b =>
@@ -110,9 +112,8 @@ namespace MachinistShiftProject.DataAccess.Migrations
                     b.Property<DateTime>("Created")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("Gender")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int?>("Gender")
+                        .HasColumnType("int");
 
                     b.Property<string>("ImagePath")
                         .HasColumnType("nvarchar(max)");
@@ -134,7 +135,7 @@ namespace MachinistShiftProject.DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Staffs", (string)null);
+                    b.ToTable("Staffs");
                 });
 
             modelBuilder.Entity("MachinistShiftProject.Entities.TaskDefinition", b =>
@@ -163,7 +164,7 @@ namespace MachinistShiftProject.DataAccess.Migrations
 
                     b.HasIndex("TaskTitleId");
 
-                    b.ToTable("TaskDefinitions", (string)null);
+                    b.ToTable("TaskDefinitions");
                 });
 
             modelBuilder.Entity("MachinistShiftProject.Entities.TaskTitle", b =>
@@ -183,7 +184,7 @@ namespace MachinistShiftProject.DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("TaskTitles", (string)null);
+                    b.ToTable("TaskTitles");
                 });
 
             modelBuilder.Entity("MachinistShiftProject.Entities.Title", b =>
@@ -198,12 +199,11 @@ namespace MachinistShiftProject.DataAccess.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Title_Name")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Titles", (string)null);
+                    b.ToTable("Titles");
                 });
 
             modelBuilder.Entity("MachinistShiftProject.Entities.TaskDefinition", b =>
